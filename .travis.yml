@@ -1,35 +1,8 @@
+language: react-native
+rvm:
+  - 0.0.1
+cache:
+  bundler: true
 
-matrix: 
-  include:
-    - language: objective-c
-      os: osx
-      xcode_workspace: '../ios/WeatherApp.xcworkspace'
-      xcode_scheme: WeatherApp
-      xcode_sdk: iphonesimulator9.0
-      osx_image: xcode10.1
-      podfile: ios/podfile
-      node_js: false
-      sudo: true
-      before_install:
-        - echo "before_install"
-      install: 
-        - echo "install"
-      script:
-        - echo "script"
-    - language: android
-      android:
-        components:
-          - tools
-          -platform-tools
-        sudo: true
-        before_install:
-          - echo "android before_install"
-        install:
-          - echo "android install"
-        script: 
-          - echo "android script"
-    - if: branch = master
-      language: node_js
-      node_js: lts/*
-      install: true
-      script: echo "MASTER BRANCH"
+script:
+  - echo "MASTER BRANCH"
