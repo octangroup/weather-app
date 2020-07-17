@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, Text, StyleSheet, Image, TouchableOpacity, SafeAreaView, FlatList} from 'react-native';
+import {View, Text, StyleSheet, Image, TouchableOpacity, SafeAreaView, FlatList, AsyncStorage} from 'react-native';
 import Drawer from 'react-native-drawer';
 import { CheckBox } from 'react-native-elements';
 const menu = [
@@ -29,9 +29,9 @@ class Home extends Component{
         return isThere;
       };
     
-      toggleChecked = (itemId) => {
+      toggleChecked = async (itemId) => {
         const ids = [...this.state.ids, itemId];
-    
+        console.log(ids);
         if (this.isChecked(itemId)) {
           this.setState({
             ...this.state,
@@ -39,9 +39,15 @@ class Home extends Component{
           });
         } else {
           this.setState({
-            ...this.state,
             ids,
           });
+            const key = await AsyncStorage.setItem('cities', JSON.stringify(ids))
+            .then(() => {
+              console.log('cities saved');
+            })
+          .catch((error) => {
+            console.log(error)
+          })
         }
       };
 
@@ -72,7 +78,7 @@ class Home extends Component{
         return(
             <View style={styles.menuContainer}>
                 <FlatList 
-                    keyExtractor={(item) => item.id}
+                    keyExtractor={(item, index) =>  index.toString()}
                     data={menu}
                     renderItem={({item}) =>{
                         return(
