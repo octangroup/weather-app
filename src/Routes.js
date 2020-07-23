@@ -1,8 +1,14 @@
 import React, {Component} from 'react';
 import {Router, Stack, Scene} from 'react-native-router-flux';
-import Login from './components/Login';
+import { Actions } from 'react-native-router-flux';
 import Home from './components/Home';
+import Weather from './components/weather';
 export default class Routes extends Component {
+
+  weather(){
+    Actions.push('weather');
+  };
+
   render() {
     return (
       <Router
@@ -10,18 +16,20 @@ export default class Routes extends Component {
         hideNavBar={false}
         navigationBarStyle={styles.nav}
         titleStyle={styles.title}>
-        <Stack key="root">
-          
-          <Scene key="home" component={Home} />
+        <Scene key="root">
           <Scene
             key="home"
             component={Home}
             title="Weather App"
-            // onRight={() => {}}
-            // rightTitle={' Add Task'}
-            // rightButtonTextStyle={styles.button}
+            onRight={() => {this.weather()}}
+            rightTitle={' Search '}
+            rightButtonTextStyle={styles.button}
           />
-        </Stack>
+           <Scene
+              key="weather"
+              component={Weather}
+              />
+        </Scene>
       </Router>
     );
   }

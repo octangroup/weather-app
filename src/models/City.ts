@@ -1,11 +1,11 @@
 export class  City{
-    id: String;
+    id: number;
     name: string
     temperature: string;
     humidity: string;
 
     constructor(
-        id: string,
+        id: number,
         name: string,
         temperature: string,
         humidity: string
@@ -16,3 +16,5 @@ export class  City{
         this.humidity = humidity
     }
 }
+
+export default City;

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {View, StyleSheet, Text} from 'react-native';
 
-class Login extends Component{
+class Weather extends Component{
     render(){
         return(
       <View style={styles.container}>
@@ -17,4 +17,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default Login;
+export default Weather;
