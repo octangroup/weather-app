@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
-import {View, Text, StyleSheet, Image, TouchableOpacity, SafeAreaView, FlatList} from 'react-native';
+import {View, Text, StyleSheet, SafeAreaView, FlatList} from 'react-native';
 import City from '../models/City';
+import {CheckBox} from 'react-native-elements';
 const city = new City();
 const cities = [
     {
@@ -8,22 +9,69 @@ const cities = [
         name: city.name = "Kigali",
         temperature: city.temperature = "12C",
         humidity: city.humidity = "Rainy"
+    },
+    {
+      id: city.id = 2,
+      name: city.name = "Musanze",
+      temperature: city.temperature = "42C",
+      humidity: city.humidity = "Sunny"
+    },
+    {
+      id: city.id = 3,
+      name: city.name = "Nairobi",
+      temperature: city.temperature = "48C",
+      humidity: city.humidity = "Cloudy"
+    },
+    {
+      id: city.id = 4,
+      name: city.name = "Kampala",
+      temperature: city.temperature = "12C",
+      humidity: city.humidity = "Rainy"
+    },
+    {
+      id: city.id = 5,
+      name: city.name = "New york",
+      temperature: city.temperature = "78C",
+      humidity: city.humidity = "Heavy rain"
+    },
+    {
+      id: city.id = 6,
+      name: city.name = "Lilongwe",
+      temperature: city.temperature = "48C",
+      humidity: city.humidity = "Cloudy"
     }
 ];
 
 class Home extends Component{
+  constructor(props){
+    super(props);
+    this.state = {
+      checked: false,
+    }
+  }
     render(){
         return(
             <SafeAreaView style={styles.safeAreaView}>
-                <View style={styles.mainContainer}>
                 <FlatList    
                                 keyExtractor={(item) => item.id.toString() }
                                 data={cities}
+                                numColumns={2}
                                 renderItem={({item}) => (
-                                <Text style={styles.items}>{item.name}</Text>
+                                  <View style={styles.container}>
+                                    <View>
+                                    <Text style={styles.items}>{item.name}</Text>
+                                    </View>
+                                     <View style={styles.box}>
+                                     <CheckBox
+                                     right={true}
+                                     checked={false}
+                                     checkedIcon="dot-circle-o"
+                                     uncheckedIcon="circle"
+                                 />
+                                 </View>
+                                  </View>
                                 )}
                             />
-                </View>
 
             </SafeAreaView>
         );
@@ -33,19 +81,27 @@ const styles = StyleSheet.create({
    safeAreaView: {
        flex: 1
    },
-   mainContainer: {
-       flex: 1,
-   },
    menuTitle: {
        flex: 1,
        color: 'white'
    },
    items: {
-        marginTop: 8,
-        fontSize: 24,
-        padding: 30,
-        backgroundColor: '#7B4141'
+    color: '#7B4141',
+    marginTop: 8,
+    fontSize: 24,
+    paddingTop: 30,
+    paddingLeft: 10
    },
+   container: {
+     flex: 1,
+     flexDirection: 'row',
+     alignItems: 'stretch'
+   },
+   box: {
+     padding: 30,
+     
+  
+   }
 });
 
 const drawerStyle = {
