@@ -3,60 +3,69 @@ import {View, Text, StyleSheet, SafeAreaView, FlatList} from 'react-native';
 import City from '../models/City';
 import {CheckBox} from 'react-native-elements';
 const city = new City();
-const cities = [
-    {
-        id: city.id = 1,
-        name: city.name = "Kigali",
-        temperature: city.temperature = "12C",
-        humidity: city.humidity = "Rainy"
-    },
-    {
-      id: city.id = 2,
-      name: city.name = "Musanze",
-      temperature: city.temperature = "42C",
-      humidity: city.humidity = "Sunny"
-    },
-    {
-      id: city.id = 3,
-      name: city.name = "Nairobi",
-      temperature: city.temperature = "48C",
-      humidity: city.humidity = "Cloudy"
-    },
-    {
-      id: city.id = 4,
-      name: city.name = "Kampala",
-      temperature: city.temperature = "12C",
-      humidity: city.humidity = "Rainy"
-    },
-    {
-      id: city.id = 5,
-      name: city.name = "New york",
-      temperature: city.temperature = "78C",
-      humidity: city.humidity = "Heavy rain"
-    },
-    {
-      id: city.id = 6,
-      name: city.name = "Lilongwe",
-      temperature: city.temperature = "48C",
-      humidity: city.humidity = "Cloudy"
-    }
-];
 
 class Home extends Component{
   constructor(props){
     super(props);
     this.state = {
-      checked: false,
+      checked: [],
+      cities : [
+        {
+            id: city.id = 1,
+            name: city.name = "Kigali",
+            temperature: city.temperature = "12C",
+            humidity: city.humidity = "Rainy"
+        },
+        {
+          id: city.id = 2,
+          name: city.name = "Musanze",
+          temperature: city.temperature = "42C",
+          humidity: city.humidity = "Sunny"
+        },
+        {
+          id: city.id = 3,
+          name: city.name = "Nairobi",
+          temperature: city.temperature = "48C",
+          humidity: city.humidity = "Cloudy"
+        },
+        {
+          id: city.id = 4,
+          name: city.name = "Kampala",
+          temperature: city.temperature = "12C",
+          humidity: city.humidity = "Rainy"
+        },
+        {
+          id: city.id = 5,
+          name: city.name = "New york",
+          temperature: city.temperature = "78C",
+          humidity: city.humidity = "Heavy rain"
+        },
+        {
+          id: city.id = 6,
+          name: city.name = "Lilongwe",
+          temperature: city.temperature = "48C",
+          humidity: city.humidity = "Cloudy"
+        }
+    ]
     }
   }
+
+  handleChange = (index) => {
+    let checked = [...this.state.checked];
+    checked[index] = !checked[index];
+    this.setState({ checked });
+  }
+
     render(){
+      let { cities, checked } = this.state;
         return(
             <SafeAreaView style={styles.safeAreaView}>
                 <FlatList    
                                 keyExtractor={(item) => item.id.toString() }
                                 data={cities}
+                                extraData={this.state}
                                 numColumns={2}
-                                renderItem={({item}) => (
+                                renderItem={({item, index}) => (
                                   <View style={styles.container}>
                                     <View>
                                     <Text style={styles.items}>{item.name}</Text>
@@ -64,9 +73,10 @@ class Home extends Component{
                                      <View style={styles.box}>
                                      <CheckBox
                                      right={true}
-                                     checked={false}
+                                     checked={checked[index]}
                                      checkedIcon="dot-circle-o"
                                      uncheckedIcon="circle"
+                                     onPress={() => this.handleChange(index)}
                                  />
                                  </View>
                                   </View>
