@@ -54,6 +54,7 @@ class Home extends Component{
     let checked = [...this.state.checked];
     checked[index] = !checked[index];
     this.setState({ checked });
+    console.log(checked[0])
   }
 
     render(){
@@ -82,7 +83,6 @@ class Home extends Component{
                                   </View>
                                 )}
                             />
-
             </SafeAreaView>
         );
     }
@@ -113,15 +113,4 @@ const styles = StyleSheet.create({
   
    }
 });
-
-const drawerStyle = {
-    drawer: {
-        flex: 1,
-        backgroundColor: '#7B4141',
-    },
-    main: {
-        flex: 1,
-        backgroundColor: 'white',
-    },
-}
 export default Home;
