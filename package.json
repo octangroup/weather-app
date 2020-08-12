@@ -17,7 +17,7 @@
     "react-native-gesture-handler": "^1.7.0",
     "react-native-navbar": "^2.1.0",
     "react-native-paper": "^4.0.1",
-    "react-native-reanimated": "^1.12.0",
+    "react-native-reanimated": "^1.13.0",
     "react-native-router-flux": "^4.2.0",
     "react-native-screens": "^2.10.1",
     "react-native-search-bar": "^3.5.1",
