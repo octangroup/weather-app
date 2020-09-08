@@ -1,0 +1,8 @@
+language: react-native
+rvm:
+  - 0.0.1
+cache:
+  bundler: true
+
+script:
+  - echo "MASTER BRANCH"
