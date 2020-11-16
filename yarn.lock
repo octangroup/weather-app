@@ -5819,10 +5819,10 @@ react-native-navbar@^2.1.0:
   dependencies:
     prop-types "^15.5.10"
 
-react-native-paper@^4.1.0:
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/react-native-paper/-/react-native-paper-4.1.0.tgz#26500fbfbb6af62aa9381eee22e508b8f2258c47"
-  integrity sha512-ML4cH31J7cfkkzP2p2YdCNaKeSY3gin04CESlshB4p95jLoN4VmfoDsvd/CTAibd+GJbsdDTJrk9VwHyLEVhlQ==
+react-native-paper@^4.4.0:
+  version "4.4.0"
+  resolved "https://registry.yarnpkg.com/react-native-paper/-/react-native-paper-4.4.0.tgz#d22b2a3032a880dbf0f69c4ad9ef065b44102c7e"
+  integrity sha512-yDb9ME9cP+tOoGV/OZcUX6QpD+kN6fcLXkehfMBDKJ/3rKfq3uA2HhT4mOFKLLCLsGkd4oZwIz7POkJpB+k0aw==
   dependencies:
     "@callstack/react-theme-provider" "^3.0.5"
     color "^3.1.2"
